@@ -5,7 +5,7 @@ export default function Result({electricResult, solarResult, expectedSaving}) {
   return (
     <Flex mt='10' direction='column' align='center' justify='center'>
       <Text fontSize='2xl'>
-        Congratulations! Your bill has been reduced!
+        This is your estimated bill
       </Text>
       <Flex mt='10' gap='2rem'>
         <BillCard amount={electricResult.toFixed(2)} text='Estimated Electricity Bill' />
@@ -13,18 +13,7 @@ export default function Result({electricResult, solarResult, expectedSaving}) {
         <BillCard amount={expectedSaving.toFixed(2)} text='Estimated savings' />
       </Flex>
       <Flex mt='28' gap='3rem'>
-        <Card w='300px' minH='200px' p='1rem' bg='cyan.50' justify='space-between'>
-          <Text>
-            Your recommended solar installation size
-          </Text>
-          <Text fontSize='2xl'>10 kW</Text> 
-        </Card>
-        <Card w='300px' minH='200px' p='1rem' bg='cyan.50' justify='space-between'>
-          <Text>
-            Energy saving tips!
-          </Text>
-          <Text></Text> 
-        </Card>
+       
         
 
       </Flex>
