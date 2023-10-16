@@ -15,7 +15,7 @@ function DoughnutChart() {
     labels: chartLabels,
     datasets: [
       {
-        label: "Total Solar Energyvs Electricity Cost",
+        label: "Total Solar Energy vs Electricity Cost",
         data: chartData,
         backgroundColor: backgroundColors,
         borderWidth: 1,
@@ -25,7 +25,7 @@ function DoughnutChart() {
 
   return (
     <div>
-      <h1 className="font-bold text-2xl text-center mt-10">
+      <h1 className="text-xl text-center mt-10">
         Monthly Total Cost of Electricity and Solar Energy
       </h1>
       <div
