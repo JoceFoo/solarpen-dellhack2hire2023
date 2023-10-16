@@ -1,0 +1,5 @@
+.point-action-container {
+    display: flex; /* Make the container a flex container */
+    align-items: center; /* Vertically align the content in the center */
+    gap: 10px; /* Add spacing between elements (adjust as needed) */
+  }

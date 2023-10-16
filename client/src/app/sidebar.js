@@ -31,6 +31,9 @@ import {
   CiDollar,
   CiChat2,
 } from 'react-icons/ci'
+import {
+  MdOutlineTipsAndUpdates,
+} from 'react-icons/md'
 import { useRouter, useSearchParams } from 'next/navigation';
 import { BuildingType } from './calculator/constant'
 import { RewardsPage } from './rewards/constants'
@@ -59,6 +62,13 @@ const LinkItems = [
       { name: RewardsPage.EARN, icon: null, path: '/rewards' },
       { name: RewardsPage.MYREWARDS, icon: null, path: '/rewards' },
       { name: RewardsPage.REDEEM, icon: null, path: '/rewards' },
+    ],
+  },
+  {
+    name: 'Tips',
+    icon: MdOutlineTipsAndUpdates,
+    subitems: [
+      { name: 'Energy Saving Tips', icon: null, path: '/energy_saving_tips' },
     ],
   },
 ];
