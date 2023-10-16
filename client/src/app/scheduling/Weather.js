@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { Box, Button, Flex, Input, Text } from '@chakra-ui/react';
+import { CiBatteryCharging, CiBatteryEmpty, CiCloudSun, CiSun } from 'react-icons/ci';
 
 const Weather = () => {
 
@@ -57,18 +59,25 @@ const Weather = () => {
   };
 
   return (
-    <div>
-      <h1>Weather App</h1>
-      <input
-        type="text"
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
-        placeholder="Enter city name"
-      />
+    <Flex direction='column' align='start'>
+      <Text alignSelf='center' fontSize='2xl'>Weather App</Text>
+      <Flex my='2rem'>
+        <Input
+          w='400'
+          mr='1rem'
+          type="text"
+          value={city}
+          borderColor='gray.600'
+          _hover={{ borderColor: 'gray.700' }}
+          onChange={(e) => setCity(e.target.value)}
+          placeholder="Enter city name"
+          />
 
-      <button onClick={getWeatherInfo}>Get Weather</button>
+        <Button bg='gray.200' _hover={{ bg: 'gray.300' }}
+          onClick={getWeatherInfo}>Get Weather</Button>
+      </Flex>
       {weatherData && (
-        <div>
+        <Box>
           <h2>Weather in {weatherData.name}</h2>
           <p>Temperature: {weatherData.main.temp}°C</p>
           <p>Apparent Temperature: {weatherData.main.feels_like}°C</p>
@@ -78,13 +87,25 @@ const Weather = () => {
           <p>Visibility: {weatherData.visibility} m</p>
           <p>CloudCover: {weatherData.clouds.all} %</p>
 
-          {prediction && <p>Prediction: {prediction}</p>}
-          {recommendation && <p>Recommendation: {recommendation}</p>}
-          {diff && <p>Diff: {diff}</p>}
+          <Box mt='4rem'>
+            {prediction && <Text>Prediction: {prediction.toFixed(6)} kW</Text>}
+            {recommendation && 
+              (<Flex align='center' gap='2'>
+                {(recommendation.search('low') >= 0) ? <CiBatteryEmpty size='50' /> : <CiBatteryCharging size='50' />}
+                Recommendation: {recommendation}
+              </Flex>)
+            }
+            {diff && 
+              (<Flex align='center' gap='2'>
+                {(diff.search('lower') >= 0) ? <CiCloudSun size='50' /> : <CiSun size='50' />}
+                {diff}
+              </Flex>)
+            }
+          </Box>
 
-        </div>
+        </Box>
       )}
-    </div>
+    </Flex>
   );
 };
 

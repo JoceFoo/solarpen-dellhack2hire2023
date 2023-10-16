@@ -2,7 +2,7 @@
 
 import { ChakraProvider } from '@chakra-ui/react';
 import Sidebar from '../sidebar';
-import Weather from './Weather';
+import Weather from './weather';
 
 const Page = () => {
 
