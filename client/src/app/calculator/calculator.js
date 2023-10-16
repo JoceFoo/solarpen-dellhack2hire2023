@@ -62,10 +62,10 @@ export default function Calculator(props) {
     setShowCalculate(true);
   }
 
-  const calculateElectricityBill = (amount) => {
+  const calculateElectricityBill = (amount, skipMinimum) => {
     let total = 0;
     switch (selectedType) {
-      case BuildingType.DOMESTIC:
+      case BuildingType.DOMESTIC.toLowerCase():
         if (amount <= 200) {
           total = (amount * 0.218);
         } else if (amount <= 300) {
@@ -92,18 +92,18 @@ export default function Calculator(props) {
         break;
 
       case buildingTypes.commercial[1].name:
-        if (amount * 0.365 < 600) {
+        total = (amount * 0.365);
+        if (skipMinimum) break;
+        if (total < 600) {
           total = (600);
-        } else {
-          total = (amount * 0.365);
         }
         break;
 
       case buildingTypes.commercial[2].name:
-        if (amount * 0.295 < 600) {
+        total = (amount * 0.295);
+        if (skipMinimum) break;
+        if (total < 600) {
           total = (600);
-        } else {
-          total = (amount * 0.295);
         }
         break;
 
@@ -120,26 +120,26 @@ export default function Calculator(props) {
         break;
 
       case buildingTypes.industrial[1].name:
-        if (amount * 0.337 < 600) {
+        total = (amount * 0.337);
+        if (skipMinimum) break;
+        if (total < 600) {
           total = (600);
-        } else {
-          total = (amount * 0.337);
         }
         break;
 
       case buildingTypes.industrial[2].name:
-        if (amount * 0.287 < 600) {
+        total = (amount * 0.287);
+        if (skipMinimum) break;
+        if (total < 600) {
           total = (600);
-        } else {
-          total = (amount * 0.287);
         }
         break;
 
       case buildingTypes.industrial[3].name:
-        if (amount * 0.295 < 600) {
+        total = (amount * 0.295);
+        if (skipMinimum) break;
+        if (total < 600) {
           total = (600);
-        } else {
-          total = (amount * 0.295);
         }
         break;
 
@@ -150,7 +150,6 @@ export default function Calculator(props) {
   }
 
   const calculateSolarBill = (amount) => {
-    let total = 0;
     if (amount <= 200) {
       return (amount * 0.218);
     } else if (amount <= 300) {
@@ -165,9 +164,9 @@ export default function Calculator(props) {
   }
 
   const calculateResult = () => {
-    setElectricalResult(calculateElectricityBill(electricity));
+    setElectricalResult(calculateElectricityBill(electricity, false));
     setSolarResult(calculateSolarBill(solarEnergy));
-    setExpectedSaving(calculateElectricityBill(solarEnergy));
+    setExpectedSaving(calculateElectricityBill(solarEnergy, true));
 
     setShowResult(true);
     setTimeout(() => {
