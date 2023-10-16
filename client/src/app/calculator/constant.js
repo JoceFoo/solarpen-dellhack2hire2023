@@ -1,0 +1,5 @@
+export const BuildingType = {
+  DOMESTIC: 'DOMESTIC',
+  COMMERCIAL: 'COMMERCIAL',
+  INDUSTRIAL: 'INDUSTRIAL',
+}
