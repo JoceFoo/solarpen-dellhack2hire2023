@@ -53,10 +53,10 @@ def predict_weather():
 
     if prediction[0] >= mean:
         recommendation = 'Recommended to carry high electricity consumption activities'
-        diff = 'Solar energy generation is higher than usual generation of {} kWh'.format(prediction[0]-0.076229)
+        diff = 'Solar energy generation is higher than usual generation of {} kW'.format(prediction[0]-0.076229)
     else:
         recommendation = 'Recommended to carry low electricity consumption activities'
-        diff = 'Solar energy generation is lower than usual generation of {} kWh'.format(0.076229-prediction[0])
+        diff = 'Solar energy generation is lower than usual generation of {} kW'.format(0.076229-prediction[0])
 
     # Return the prediction as JSON
     return jsonify({
