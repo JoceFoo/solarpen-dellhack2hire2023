@@ -37,7 +37,7 @@ import { RewardsPage } from './rewards/constants'
 
 const LinkItems = [
   { name: 'Home', icon: CiHome, path: '/' },
-  { name: 'Scheduling', icon: CiTimer, path: '/' },
+  { name: 'Scheduling', icon: CiTimer, path: '/scheduling' },
   {
     name: 'Calculator', icon: CiCalculator1,
     subitems: [
