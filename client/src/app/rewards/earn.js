@@ -1,21 +1,24 @@
 'use client'
 
 import { useState, } from 'react';
-import { Flex, Text, Button, Stack, WrapItem, Card, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalCloseButton, IconButton } from "@chakra-ui/react";
+import { Flex, Text, Button, Box, WrapItem, Card, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalCloseButton, IconButton } from "@chakra-ui/react";
 import Image from "next/image";
-import './rewards.css';
+//import './rewards.css';
 import { BsCalendar2Check, BsLightbulbOff, BsPeople } from "react-icons/bs";
 import { ImEarth } from "react-icons/im";
 import { GrGroup, GrCircleInformation } from "react-icons/gr";
 import { MdOutlineEco, MdOutlineEnergySavingsLeaf, MdOutlineReviews, MdElectricalServices, MdQuestionMark,   } from "react-icons/md";
 
 // Custom component to display a point-earning action
-function PointAction({ action, points, onAddPoints }) {
+function PointAction({ icon, action, points, onAddPoints }) {
   return (
-    <Stack direction='column' spacing={15} align='right'>
-      <Text>{action}</Text>
-      <Button colorScheme='Cyan' onClick={() => onAddPoints(points)}>+{points}</Button>
-    </Stack>
+    <Flex direction='row' spacing={15} align='center' justify='space-between' gap='1rem' w='100%'>
+      <Flex align='center' gap='1rem'>
+        <IconButton icon={icon}/>
+        <Text>{action}</Text>
+      </Flex>
+      <Button bg='Cyan' size='md'px='0' minW='60px' onClick={() => onAddPoints(points)}>+{points}</Button>
+    </Flex>
   );
 }
 
@@ -50,7 +53,6 @@ function Redeem(props) {
     <Flex direction="column" align="center" justify="start">
       <Text fontSize='3xl'>Redeem Points</Text>
       <Text fontSize='x1'>Use your points to get fabulous treats!</Text>
-      <Text>Total Points: {Earn.totalPoints}</Text>
         <Flex direction='row' align='center' justify='space-around'>
           {Object.values(rewardsTypes).map((rewardsType, index)=>
             // rewardsType = [[], []];
@@ -98,46 +100,24 @@ function Earn() {
   }
   
   return (
-    <Flex direction="column" align="center" justify="start">
-      <Text fontSize='3xl'>Earn Points</Text>
-      <Text fontSize='xl'>Earn Points by completing the missions!</Text>
-      <div className="point-action-container">
-        <IconButton icon={<BsCalendar2Check />}/><PointAction action="Daily check-in" points={10} onAddPoints={handleAddPoints} />
-      </div>
-      <div className="point-action-container">
-        <IconButton icon={<MdOutlineEco />}/><PointAction action="Purchase eco-friendly electric appliances" points={50} onAddPoints={handleAddPoints} />
-      </div>
-      <div className="point-action-container">
-        <IconButton icon={<BsLightbulbOff />}/><PointAction action="Switch off all appliances in home" points={20} onAddPoints={handleAddPoints} />
-      </div>
-      <div className="point-action-container">
-        <IconButton icon={<MdOutlineEnergySavingsLeaf />}/><PointAction action="Visit energy saving hub" points={15} onAddPoints={handleAddPoints} />
-      </div>
-      <div className="point-action-container">
-        <IconButton icon={<MdOutlineReviews />}/><PointAction action="Provide helpful review" points={10} onAddPoints={handleAddPoints} />
-      </div>
-      <div className="point-action-container">
-        <IconButton icon={<MdElectricalServices />}/><PointAction action="Use eco-friendly electric appliances" points={20} onAddPoints={handleAddPoints} />
-      </div>
-      <div className="point-action-container">
-        <IconButton icon={<MdQuestionMark />}/><PointAction action="Answer a question and get points!" points={15} onAddPoints={handleAddPoints} />
-      </div>
-      <div className="point-action-container">
-        <IconButton icon={<BsPeople />}/><PointAction action="Referring a new member to the community" points={30} onAddPoints={handleAddPoints} />
-      </div>
-      <div className="point-action-container">
-        <IconButton icon={<ImEarth />}/><PointAction action="Celebrate Earth Day!" points={50} onAddPoints={handleAddPoints} />
-      </div>
-      <div className="point-action-container">
-        <IconButton icon={<GrGroup />}/><PointAction action="Organizing a community event" points={20} onAddPoints={handleAddPoints} />
-      </div>
-      <div className="point-action-container">
-        <IconButton icon={<GrCircleInformation />}/><PointAction action="Sharing an informative article" points={5} onAddPoints={handleAddPoints} />
-      </div>
+    <Flex direction="column" align="start" justify="start" gap='1rem' ml='5rem' mr='15rem'>
+      <Text fontSize='3xl' alignSelf='center'>Earn Points</Text>
+      <Text fontSize='xl' alignSelf='center'>Earn Points by completing the missions!</Text>
+        <PointAction icon={<BsCalendar2Check />} action="Daily check-in" points={10} onAddPoints={handleAddPoints} />
+        <PointAction icon={<MdOutlineEco />} action="Purchase eco-friendly electric appliances" points={50} onAddPoints={handleAddPoints} />
+        <PointAction icon={<BsLightbulbOff />} action="Switch off all appliances in home" points={20} onAddPoints={handleAddPoints} />
+        <PointAction icon={<MdOutlineEnergySavingsLeaf />} action="Visit energy saving hub" points={15} onAddPoints={handleAddPoints} />
+        <PointAction icon={<MdOutlineReviews />} action="Provide helpful review" points={10} onAddPoints={handleAddPoints} />
+        <PointAction icon={<MdElectricalServices />} action="Use eco-friendly electric appliances" points={20} onAddPoints={handleAddPoints} />
+        <PointAction icon={<MdQuestionMark />} action="Answer a question and get points!" points={15} onAddPoints={handleAddPoints} />
+        <PointAction icon={<BsPeople />} action="Referring a new member to the community" points={30} onAddPoints={handleAddPoints} />
+        <PointAction icon={<ImEarth />} action="Celebrate Earth Day!" points={50} onAddPoints={handleAddPoints} />
+        <PointAction icon={<GrGroup />} action="Organizing a community event" points={20} onAddPoints={handleAddPoints} />
+        <PointAction icon={<GrCircleInformation />} action="Sharing an informative article" points={5} onAddPoints={handleAddPoints} />
       <Text>Total Points: {totalPoints}</Text>
       <br />
-      <Text fontSize='3xl'>My Rewards</Text>
-      <Text fontSize='xl'>Your selected rewards:</Text>
+      <Text fontSize='3xl' alignSelf='center'>My Rewards</Text>
+      <Text fontSize='xl' alignSelf='center'>Your selected rewards:</Text>
         {/* {selectedRewards && selectedRewards.length>0?(
               selectedRewards.map((reward, index) => (
               <Text key={index}>
