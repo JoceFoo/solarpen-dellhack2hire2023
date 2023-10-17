@@ -60,7 +60,7 @@ const Weather = () => {
 
   return (
     <Flex direction='column' align='start'>
-      <Text alignSelf='center' fontSize='2xl'>Weather App</Text>
+      <Text alignSelf='center' fontSize='2xl'>Intelligent Scheduling</Text>
       <Flex my='2rem'>
         <Input
           w='400'
