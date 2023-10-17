@@ -190,8 +190,8 @@ export default function Calculator(props) {
           </Flex>
         )}
 
-        <SliderBill title={'Insert your monthly electricity bill'} isOpen={selectedType != null} sliderValue={electricity} setSliderValue={electricityOnChange} />
-        <SliderBill title={'Insert your monthly solar bill'} isOpen={selectedType != null} sliderValue={solarEnergy} setSliderValue={solarOnChange} />
+        <SliderBill title={'Insert your monthly electricity'} isOpen={selectedType != null} sliderValue={electricity} setSliderValue={electricityOnChange} />
+        <SliderBill title={'Insert your monthly solar energy'} isOpen={selectedType != null} sliderValue={solarEnergy} setSliderValue={solarOnChange} />
         <CalculateButton isOpen={selectedType != null && showCalculate} onClick={calculateResult} />
       </Flex>
       {showResult && (<Result solarResult={solarResult} electricResult={electricalResult} expectedSaving={expectedSaving}/>)}
