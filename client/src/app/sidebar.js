@@ -60,8 +60,8 @@ const LinkItems = [
     icon: CiGift,
     subitems: [
       { name: RewardsPage.EARN, icon: null, path: '/rewards' },
-      { name: RewardsPage.MYREWARDS, icon: null, path: '/rewards' },
-      { name: RewardsPage.REDEEM, icon: null, path: '/rewards' },
+      // { name: RewardsPage.MYREWARDS, icon: null, path: '/rewards' },
+      // { name: RewardsPage.REDEEM, icon: null, path: '/rewards' },
     ],
   },
   {
